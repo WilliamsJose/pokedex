@@ -1,17 +1,18 @@
-import { useState } from 'react';
+import CardPokemon from './components/CardPokemon';
+import Container from './components/Container';
 import './styles/App.css';
-import Button from './components/Button';
 
 function App() {
-  const [count, setCount] = useState(0);
   console.log('app rendered');
 
   return (
-    <>
-      <Button $primary onClick={() => setCount(count => count + 1)}>
-        count is {count}
-      </Button>
-    </>
+    <Container>
+      <CardPokemon
+        name="Bulbasaur"
+        urlImage="https://i.pinimg.com/originals/8d/66/d9/8d66d96a9893ee18763d913767db869f.png"
+        types={[{ type: { name: 'Grass' } }, { type: { name: 'Poison' } }]}
+      />
+    </Container>
   );
 }
 
