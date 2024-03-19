@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint src/ --fix",
     "preview": "vite preview",
-    "husky-install": "husky install",
-    "lint-staged": "lint-staged --config lint-staged.js"
+    "format": "prettier src/ --write",
+    "quality": "pnpm run lint && pnpm run format",
+    "prepare": "husky"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -28,7 +29,6 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
-    "tsc-files": "^1.1.4",
     "typescript": "^5.2.2",
     "vite": "^5.1.6"
   }
