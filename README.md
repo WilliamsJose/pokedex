@@ -36,3 +36,5 @@ Util:
 
   se minha paginação não funfar: https://pokeapi.co/docs/v2#resource-listspagination-section
 
+  para imagens: https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg
+

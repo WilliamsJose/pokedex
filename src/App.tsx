@@ -9,7 +9,7 @@ function App() {
     <Container>
       <CardPokemon
         name="Bulbasaur"
-        urlImage="https://i.pinimg.com/originals/8d/66/d9/8d66d96a9893ee18763d913767db869f.png"
+        urlImage="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
         types={[{ type: { name: 'Grass' } }, { type: { name: 'Poison' } }]}
       />
     </Container>
