@@ -1,10 +1,6 @@
 import styled, { css } from 'styled-components';
 
-interface ButtonProps {
-  $primary?: boolean;
-}
-
-const Button = styled.button<ButtonProps>`
+export const Button = styled.button<{ $primary?: boolean }>`
   color: black;
   border-radius: 8px;
   border: 1px solid transparent;
@@ -24,5 +20,3 @@ const Button = styled.button<ButtonProps>`
       color: white;
     `};
 `;
-
-export default Button;

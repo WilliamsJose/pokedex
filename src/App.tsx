@@ -1,18 +1,17 @@
 import CardPokemonDetails from './components/CardPokemonDetails';
+import { AppUseCase } from './useCases';
 
 function App() {
+  const { data, isLoading, error } = AppUseCase();
   console.log('app rendered');
+  if (error) {
+    console.error(error);
+  }
 
   return (
     <>
-      <CardPokemonDetails
-        name="Bulbasaur"
-        urlImage="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
-        types={[
-          { type: { name: 'Fire', url: '' }, slot: 0 },
-          { type: { name: 'Poison', url: '' }, slot: 0 },
-        ]}
-      />
+      {isLoading && <h1>Loading...</h1>}
+      {data && <CardPokemonDetails data={data} />}
     </>
   );
 }

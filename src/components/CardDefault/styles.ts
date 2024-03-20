@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const CardDefault = styled.div<{ $bgColor?: string }>`
+export const CardDefault = styled.div<{ $bgColor?: string }>`
   background-color: var(--color-${props => props.$bgColor || 'normal'});
   width: 100%;
   max-width: 14rem;
@@ -11,5 +11,3 @@ const CardDefault = styled.div<{ $bgColor?: string }>`
   position: relative;
   overflow: hidden;
 `;
-
-export default CardDefault;
