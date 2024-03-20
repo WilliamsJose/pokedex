@@ -3,7 +3,9 @@ import Container from './Container';
 
 const Card = styled.div<{ $bgUrl?: string; $bgColor?: string }>`
   background-color: var(--color-${props => props.$bgColor || 'normal'});
-  width: 14rem;
+  width: 100%;
+  max-width: 14rem;
+  min-width: fit-content;
   height: 10rem;
   border-radius: 15px;
   display: flex;
@@ -66,8 +68,8 @@ const CardPokemon = ({ name, types, urlImage }: CardPokemonProps) => {
         <Container>
           <Container style={{ flexDirection: 'column', width: '60%' }}>
             {types &&
-              types.map(pokeType => (
-                <Type key={pokeType.type.name}>{pokeType.type.name}</Type>
+              types.map(pokemon => (
+                <Type key={pokemon.type.name}>{pokemon.type.name}</Type>
               ))}
           </Container>
           <Image $bgUrl={urlImage} />

@@ -1,6 +1,5 @@
 import CardPokemon from './components/CardPokemon';
 import Container from './components/Container';
-import './styles/App.css';
 
 function App() {
   console.log('app rendered');
