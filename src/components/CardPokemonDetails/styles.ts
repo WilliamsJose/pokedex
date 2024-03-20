@@ -70,6 +70,10 @@ export const TabContainerExt = styled(TabContainer)`
   height: 100%;
 `;
 
+export const MarginSpan = styled.span<{ $value: number }>`
+  margin: ${props => props.$value < 100 && '0 4px'};
+`;
+
 export const SpacedRow = styled(Container)`
   & > :first-child {
     flex: 0 0 28%;

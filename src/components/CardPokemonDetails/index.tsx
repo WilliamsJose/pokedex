@@ -91,18 +91,20 @@ const CardPokemonDetails = ({ data }: CardPokemonDetailsProps) => {
           {stats.map(pokemon => (
             <S.SpacedRow key={pokemon.stat.name}>
               <span>{capitalize(formatSpecialWords(pokemon.stat.name))}</span>
-              {pokemon.base_stat}
+              <S.MarginSpan $value={pokemon.base_stat}>
+                {pokemon.base_stat}
+              </S.MarginSpan>
               <SliderContainer>
                 <SliderValue
                   $fillColor={normalizedPokemonType}
-                  $value={pokemon.base_stat}
+                  $value={pokemon.base_stat < 101 ? pokemon.base_stat : 100}
                 />
               </SliderContainer>
             </S.SpacedRow>
           ))}
           <S.SpacedRow>
             <span>Total</span>
-            {sumPower}
+            <span>{sumPower}</span>
             <SliderContainer>
               <SliderValue
                 $fillColor={normalizedPokemonType}
