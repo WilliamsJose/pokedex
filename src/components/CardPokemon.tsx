@@ -1,81 +1,65 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import PokeBallSports from '../assets/poke-ball-sports.svg';
+import { IPokemonType } from '../domain';
+import CardDefault from './CardDefault';
 import Container from './Container';
+import Image from './Image';
+import PokemonTitle from './PokemonTitle';
+import PokemonTypePill from './PokemonTypePill';
 
-const Card = styled.div<{ $bgUrl?: string; $bgColor?: string }>`
-  background-color: var(--color-${props => props.$bgColor || 'normal'});
-  width: 100%;
-  max-width: 14rem;
-  min-width: fit-content;
-  height: 10rem;
-  border-radius: 15px;
-  display: flex;
-  ${props =>
-    props.$bgUrl &&
-    css`
-      background-image: url(${props.$bgUrl});
-      background-size: cover;
-    `}
-`;
-
-const Title = styled.h1`
-  font-size: 18px;
-  color: white;
-`;
-
-const Type = styled.span`
-  background-color: rgba(255, 255, 255, 0.3);
-  color: white;
-  font-size: 12px;
-  border-radius: 500px;
-  margin: 3px 0 3px;
-  padding: 3px 12px;
-  width: fit-content;
-`;
-
-const Image = styled.div<{ $bgUrl: string }>`
+const PokemonImage = styled(Image)`
   width: 90px;
   height: 90px;
-  margin-top: 10px;
-  ${props =>
-    props.$bgUrl &&
-    css`
-      background-image: url(${props.$bgUrl});
-      background-size: contain;
-      background-position: center;
-      transform: scaleX(-1);
-      background-repeat: no-repeat;
-    `}
+  margin: 10px 0 0 20px;
+  transform: scaleX(-1);
+`;
+
+const PokeBallImage = styled(Image)`
+  opacity: 0.15;
+  width: 65%;
+  position: absolute;
+  right: -10%;
+  bottom: -10%;
+`;
+
+const TopColumnContainer = styled(Container)`
+  flex-direction: column;
+  padding: 0 16px;
+  margin-top: 6px;
+`;
+
+const PokemonTypeContainer = styled(Container)`
+  flex-direction: column;
+  width: 60%;
 `;
 
 interface CardPokemonProps {
   name: string;
-  types: any[];
+  types: IPokemonType[];
   urlImage: string;
 }
 
 const CardPokemon = ({ name, types, urlImage }: CardPokemonProps) => {
+  const normalizedPokemonType = types[0].type.name.toLowerCase();
   return (
     // get color based on first element type of pokémon
-    <Card $bgColor={types[0].type.name.toLowerCase()}>
-      <Container
-        style={{
-          flexDirection: 'column',
-          padding: '0 16px',
-          marginTop: '6px',
-        }}
-      >
-        <Title>{name}</Title>
+    <CardDefault $bgColor={normalizedPokemonType}>
+      <PokeBallImage src={PokeBallSports} />
+      <TopColumnContainer>
+        <PokemonTitle>{name}</PokemonTitle>
         <Container>
-          <Container style={{ flexDirection: 'column', width: '60%' }}>
+          <PokemonTypeContainer>
             {types &&
               types.map(pokemon => (
-                <Type key={pokemon.type.name}>{pokemon.type.name}</Type>
+                <PokemonTypePill key={pokemon.type.name}>
+                  {pokemon.type.name}
+                </PokemonTypePill>
               ))}
-          </Container>
-          <Image $bgUrl={urlImage} />
+          </PokemonTypeContainer>
+          <PokemonImage src={urlImage} />
         </Container>
-      </Container>
-    </Card>
+      </TopColumnContainer>
+    </CardDefault>
   );
 };
 

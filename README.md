@@ -2,7 +2,7 @@
 
 #### TODO:
 - [ ] Componentes com Styled Components
-  - [ ] Componente com Nome, Tipo e Foto do Pokémon
+  - [x] Componente com Nome, Tipo e Foto do Pokémon
   - [ ] Componente com detalhes do Pokémon
     - [ ] Aba About
     - [ ] Aba BaseStats
