@@ -21,6 +21,11 @@ const CardPokemonDetails = ({ data }: CardPokemonDetailsProps) => {
   const { name, types, id, height, weight, abilities, stats } = data;
   const normalizedPokemonType = types[0].type.name.toLowerCase();
   const pokemonImageUrl = data.sprites.other.dream_world.front_default;
+  const sumPower: number = data.stats.reduce(
+    (prevStat, currStat) => prevStat + currStat.base_stat,
+    0,
+  );
+  console.log(sumPower);
 
   const onTabSelected = (index: number) => {
     console.log(index);
@@ -84,7 +89,7 @@ const CardPokemonDetails = ({ data }: CardPokemonDetailsProps) => {
         </TabContent>
         <TabContent selectedTab={selectedTab} tabToShow={1}>
           {stats.map(pokemon => (
-            <S.SpacedRow>
+            <S.SpacedRow key={pokemon.stat.name}>
               <span>{capitalize(formatSpecialWords(pokemon.stat.name))}</span>
               {pokemon.base_stat}
               <SliderContainer>
@@ -95,6 +100,16 @@ const CardPokemonDetails = ({ data }: CardPokemonDetailsProps) => {
               </SliderContainer>
             </S.SpacedRow>
           ))}
+          <S.SpacedRow>
+            <span>Total</span>
+            {sumPower}
+            <SliderContainer>
+              <SliderValue
+                $fillColor={normalizedPokemonType}
+                $value={sumPower / 6}
+              />
+            </SliderContainer>
+          </S.SpacedRow>
         </TabContent>
       </S.LowerCard>
     </>
