@@ -4,6 +4,7 @@ import { PokemonTypePill } from '../PokemonTypePill/styles';
 import { PokemonTitle } from '../PokemonTitle/styles';
 import { CardDefault } from '../CardDefault/styles';
 import { TabContainer } from '../Tab/styles';
+import { Container } from '../Container/styles';
 
 export const TopCard = styled(CardDefault)`
   width: 100vw;
@@ -67,4 +68,14 @@ export const TabContainerExt = styled(TabContainer)`
   padding: 0 10px;
   box-sizing: border-box;
   height: 100%;
+`;
+
+export const SpacedRow = styled(Container)`
+  & > :first-child {
+    flex: 0 0 28%;
+  }
+
+  & > :nth-child(2) {
+    flex: 1;
+  }
 `;

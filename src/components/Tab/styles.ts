@@ -12,7 +12,9 @@ export const TabContainer = styled.div`
 
 export const TabContent = styled(TabContainer)`
   height: 100%;
+  padding-top: 10px;
   border-radius: 0;
+  flex-direction: column;
 `;
 
 const selectedColor = 'rgb(30,190,230)';

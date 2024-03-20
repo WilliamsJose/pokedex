@@ -3,9 +3,9 @@
 #### TODO:
 - [ ] Componentes com Styled Components
   - [x] Componente com Nome, Tipo e Foto do Pokémon
-  - [ ] Componente com detalhes do Pokémon
+  - [x] Componente com detalhes do Pokémon
     - [ ] Aba About
-    - [ ] Aba BaseStats
+    - [x] Aba BaseStats
     - [ ] Aba Evolution
     - [ ] Aba Moves
 - [ ] Páginas
@@ -23,7 +23,7 @@
 #### Opcionais
 - [ ] Autenticação de usuário
 - [ ] Troca de Pokémon entre usuários.
-- [ ] React SWR para cache
+- [x] React SWR para cache
 
 
 Util:
