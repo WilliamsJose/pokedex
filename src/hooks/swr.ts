@@ -10,9 +10,8 @@ function getDataFromCache(cache_key: string) {
 }
 
 const fetcher = async (path: string) => {
-  console.log('Loading data...');
-  console.log(path);
-  const data = await fetch(`https://pokeapi.co/api/v2/${path}`);
+  console.log('Loading data...', path);
+  const data = await fetch(`${import.meta.env.VITE_API_BASE_URL}${path}`);
 
   return await data.json();
 };
@@ -24,6 +23,10 @@ export function useData(path: string) {
       saveDataToCache(data, path);
     },
     revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+    revalidateOnMount: true,
+    revalidateIfStale: false,
+    errorRetryCount: 1,
   });
 
   return {

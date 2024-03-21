@@ -25,10 +25,8 @@ const CardPokemonDetails = ({ data }: CardPokemonDetailsProps) => {
     (prevStat, currStat) => prevStat + currStat.base_stat,
     0,
   );
-  console.log(sumPower);
 
   const onTabSelected = (index: number) => {
-    console.log(index);
     setSelectedTab(index);
   };
 

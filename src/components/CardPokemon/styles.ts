@@ -3,9 +3,8 @@ import { Image } from '../Image/styles';
 import { Container } from '../Container/styles';
 
 export const PokemonImage = styled(Image)`
-  width: 90px;
-  height: 90px;
-  margin: 10px 0 0 20px;
+  width: 100px;
+  height: 105px;
   transform: scaleX(-1);
 `;
 
