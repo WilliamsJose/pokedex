@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import * as S from './styles';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useData } from '../../hooks/swr';
 
 function FilterPokemon() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const { data } = useData('type');
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const filterOptions = data.results;
 
   const handleOptionChange = (event: any): void => {
@@ -14,7 +14,8 @@ function FilterPokemon() {
       import.meta.env.VITE_API_BASE_URL,
       '',
     );
-    navigate(url);
+    console.log('navigate to', url);
+    // navigate(url);
   };
 
   function handleFilterOpen() {
