@@ -5,6 +5,9 @@
 
 ### Como executar local
 
+Como nesse caso a api é pública, podemos usar o .env.example. Renomeieo para .env
+
+após isso execute no terminal:
 ```sh
 pnpm install
 pnpm dev
