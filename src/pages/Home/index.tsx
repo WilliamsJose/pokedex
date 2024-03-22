@@ -1,4 +1,5 @@
 import CardPokemon from '../../components/CardPokemon';
+import FilterPokemon from '../../components/FilterPokemon';
 import Pagination from '../../components/Pagination';
 import { Title } from '../../components/Title/styles';
 import { IPokemon } from '../../domain';
@@ -23,6 +24,7 @@ function HomePage() {
         currentPage={page}
         totalPages={totalPages}
       />
+      <FilterPokemon />
     </S.HomeContainer>
   );
 }

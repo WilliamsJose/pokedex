@@ -3,7 +3,7 @@ import { Title } from '../../components/Title/styles';
 import * as S from './styles';
 import { Button } from '../../components/Button/styles';
 
-function NotFound() {
+function NotFound({ text }: { text?: string }) {
   const navigate = useNavigate();
 
   function goHome() {
@@ -13,7 +13,7 @@ function NotFound() {
   return (
     <S.NotFoundContainer>
       <Title>Sorry!</Title>
-      <p>Something wrong ocurred</p>
+      <p>{text ? text : 'Something wrong ocurred'}</p>
       <p>
         <Button onClick={goHome}>Go Home</Button>
       </p>
