@@ -28,7 +28,7 @@ function FilterPokemon() {
           <S.FilterTitle>Filter by type</S.FilterTitle>
           <S.FilterSelect value={0} onChange={handleOptionChange}>
             <option value="0">Select a type</option>
-            {filterOptions.map((option: string, index: number) => (
+            {filterOptions.map((option: any, index: number) => (
               <option key={index} value={option.url}>
                 {option.name}
               </option>
