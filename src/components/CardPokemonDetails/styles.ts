@@ -20,6 +20,9 @@ export const TopCard = styled(CardDefault)`
   @media only screen and (min-width: 600px) {
     min-height: 300px;
   }
+  @media only screen and (min-width: 1280px) {
+    overflow: visible;
+  }
 `;
 
 export const LowerCard = styled(TopCard)`
@@ -36,7 +39,6 @@ export const PokeBallImage = styled(Image)`
   position: absolute;
   right: -8%;
   bottom: -8%;
-  overflow: visible;
 `;
 
 export const PokemonImage = styled(Image)`

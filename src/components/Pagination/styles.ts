@@ -27,6 +27,9 @@ export const PaginationButton = styled(Button)`
   &:hover {
     color: red;
   }
+  &:disabled {
+    cursor: auto;
+  }
 `;
 
 export const PaginationItem = styled.span`

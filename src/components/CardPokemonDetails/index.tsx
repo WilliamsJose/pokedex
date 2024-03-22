@@ -17,7 +17,6 @@ import * as S from './styles';
 const CardPokemonDetails = () => {
   const { pokemonId } = useParams();
   const { data } = useData(`pokemon/${pokemonId}`);
-  console.log(data);
   const [selectedTab, setSelectedTab] = useState<number>(0);
   const { name, types, id, height, weight, abilities, stats } = data;
   const normalizedPokemonType = types[0].type.name.toLowerCase();
@@ -82,7 +81,7 @@ const CardPokemonDetails = () => {
             <span>{formatHeight(height)}</span>
           </S.SpacedRow>
           <S.SpacedRow>
-            <span>Weight </span>
+            <span>Weight</span>
             <span>{formatWeight(weight)}</span>
           </S.SpacedRow>
           <S.SpacedRow>

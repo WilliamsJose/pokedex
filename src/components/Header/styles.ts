@@ -10,7 +10,7 @@ export const Header = styled.div`
   background-color: inherit;
   font-size: 30px;
   place-items: center;
-  padding: 40px 15px;
+  padding: 80px 15px;
   color: white;
   max-width: 1024px;
   margin: auto;
