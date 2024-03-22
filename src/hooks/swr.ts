@@ -11,7 +11,7 @@ function getDataFromCache(cache_key: string) {
 
 const fetcher = async (path: string) => {
   console.log('Loading data...', path);
-  const data = await fetch(`${import.meta.env.VITE_API_BASE_URL}${path}`);
+  const data = await fetch(`${import.meta.env.VITE_API_BASE_URL}/${path}`);
 
   return await data.json();
 };
@@ -23,10 +23,10 @@ export function useData(path: string) {
       saveDataToCache(data, path);
     },
     revalidateOnFocus: false,
-    revalidateOnReconnect: false,
+    revalidateOnReconnect: true,
     revalidateOnMount: true,
-    revalidateIfStale: false,
-    errorRetryCount: 1,
+    revalidateIfStale: true,
+    errorRetryCount: 0,
   });
 
   return {

@@ -3,13 +3,16 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import Header from './components/Header';
+import App from './App';
 import HomePage from './pages/Home';
+import CardPokemonDetails from './components/CardPokemonDetails';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Header />}>
+    <Route path="/" element={<App />}>
       <Route path="/" element={<HomePage />} />
+      <Route path="/page/:page" element={<HomePage />} />
+      <Route path="/details/:pokemonId" element={<CardPokemonDetails />} />
 
       {/* <Route element={<AuthLayout />}>
         <Route path="login" element={<Login />} loader={redirectIfUser} />

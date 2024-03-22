@@ -8,7 +8,7 @@ export const Header = styled.div`
   justify-content: space-between;
   box-sizing: border-box;
   height: 48px;
-  background-color: red;
+  background-color: inherit;
   font-size: 30px;
   place-items: center;
   padding: 40px 18px;
@@ -16,10 +16,15 @@ export const Header = styled.div`
 `;
 
 export const ButtonExt = styled(Button)`
-  background-color: inherit;
   padding: 8px;
-  color: white;
+  color: black;
   height: 50px;
   text-align: center;
+  border: none;
   width: 50px;
+  background-color: inherit;
+  transition: color 0.4s ease;
+  &:hover {
+    color: red;
+  }
 `;

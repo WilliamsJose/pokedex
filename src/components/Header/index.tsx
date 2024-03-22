@@ -1,7 +1,6 @@
 import * as S from './styles';
 import { HiArrowLongLeft } from 'react-icons/hi2';
 import { HiOutlineHeart } from 'react-icons/hi2';
-import { Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 const Header = ({ ...restProps }) => (
@@ -15,7 +14,6 @@ const Header = ({ ...restProps }) => (
       </S.ButtonExt>
     </S.Header>
     <ToastContainer />
-    <Outlet />
   </>
 );
 

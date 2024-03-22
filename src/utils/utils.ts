@@ -39,3 +39,7 @@ export function formatSpecialWords(str: string): string {
     .replaceAll('special-attack', 'Sp. Atk')
     .replaceAll('special-defense', 'Sp. Def');
 }
+
+export function getOffset(currentPage: number, itemsPerPage: number) {
+  return (currentPage - 1) * itemsPerPage;
+}

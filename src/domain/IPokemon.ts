@@ -15,6 +15,7 @@ export interface IPokemon {
   types: IPokemonType[];
   order: number;
   sprites: {
+    front_default: string;
     other: {
       dream_world: {
         front_default: string;

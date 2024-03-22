@@ -1,19 +1,29 @@
-import { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useData } from '../hooks/swr';
-import { toast } from 'react-toastify';
+import { getOffset } from '../utils/utils';
 
 export function HomeUseCase() {
-  const { data, isLoading, error } = useData('pokemon/?limit=20&offset=40"');
+  const { page } = useParams();
+  const navigate = useNavigate();
+  const pageLimit = 20;
+  const offset = page && getOffset(+page, pageLimit);
+  const currentPage = `pokemon/?offset=${offset}&limit=${pageLimit}`;
+  const { data, isLoading, error } = useData(currentPage);
+  const totalPokemons = data?.count;
+  const totalPages = Math.ceil(totalPokemons / pageLimit);
 
-  useEffect(() => {
-    if (error) {
-      toast(`Error trying to fetch pokemons`);
-    }
-  }, [error]);
+  function onPageChange(nextPage: number) {
+    navigate(`/page/${nextPage}`, {
+      preventScrollReset: true,
+    });
+  }
 
   return {
     data,
     isLoading,
     error,
+    totalPages,
+    onPageChange,
+    page,
   };
 }
