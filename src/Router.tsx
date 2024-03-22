@@ -23,12 +23,6 @@ const router = createBrowserRouter(
         errorElement={<NotFound />}
       />
 
-      <Route
-        path="/type/:pokemonType"
-        element={<NotFound text="Page not implemented yet!" />}
-        errorElement={<NotFound />}
-      />
-
       {/* <Route element={<AuthLayout />}>
         <Route path="login" element={<Login />} loader={redirectIfUser} />
         <Route path="logout" action={logoutUser} />

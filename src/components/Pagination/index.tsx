@@ -37,7 +37,7 @@ const Pagination = ({
 
   return (
     <S.Pagination {...restProps}>
-      <S.PaginationButton onClick={handlePreviousPage}>
+      <S.PaginationButton disabled={isFirstPage} onClick={handlePreviousPage}>
         <HiChevronLeft />
       </S.PaginationButton>
       {!isFirstPage && (
@@ -61,7 +61,7 @@ const Pagination = ({
           </S.PaginationButton>
         </>
       )}
-      <S.PaginationButton onClick={handleNextPage}>
+      <S.PaginationButton disabled={isLastPage} onClick={handleNextPage}>
         <HiChevronRight />
       </S.PaginationButton>
     </S.Pagination>

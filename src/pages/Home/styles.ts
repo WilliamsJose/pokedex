@@ -11,5 +11,4 @@ export const HomeContainer = styled(Container)`
   padding: 0 25px;
   max-width: 1024px;
   margin: auto;
-  position: relative;
 `;

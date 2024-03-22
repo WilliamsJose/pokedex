@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import PokeBallSports from '/poke-ball-sports.svg';
+import PokeBallSports from '../../assets/poke-ball-sports.svg';
 import { IPokemonType } from '../../domain';
 import { useData } from '../../hooks/swr';
 import { CardDefault } from '../CardDefault/styles';

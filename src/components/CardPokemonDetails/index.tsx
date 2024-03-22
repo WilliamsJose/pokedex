@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import PokeBallSports from '/poke-ball-sports.svg';
+import PokeBallSports from '../../assets/poke-ball-sports.svg';
 import { IPokemonAbility, IPokemonStats, IPokemonType } from '../../domain';
 import { useData } from '../../hooks/swr';
 import {
