@@ -5,17 +5,18 @@ import { PokemonTitle } from '../PokemonTitle/styles';
 import { CardDefault } from '../CardDefault/styles';
 import { TabContainer } from '../Tab/styles';
 import { Container } from '../Container/styles';
+import { LuImageOff } from 'react-icons/lu';
 
 export const TopCard = styled(CardDefault)`
-  width: 100vw;
   box-sizing: border-box;
   min-width: fit-content;
   height: 50%;
-  max-height: 200px;
+  min-height: 200px;
   max-width: 1024px;
-  padding: 0 18px;
+  padding: 0 25px 190px 25px;
   flex-direction: column;
   border-radius: 0;
+  margin: auto;
   @media only screen and (min-width: 600px) {
     min-height: 300px;
   }
@@ -35,23 +36,40 @@ export const PokeBallImage = styled(Image)`
   position: absolute;
   right: -8%;
   bottom: -8%;
+  overflow: visible;
 `;
 
 export const PokemonImage = styled(Image)`
   width: 35%;
   max-width: 300px;
   position: sticky;
-  margin: -28% auto 0 auto;
+  margin: -35% auto 0 auto;
+  height: 300px;
+  @media only screen and (min-width: 600px) {
+    margin-top: -27%;
+  }
+`;
+
+export const PokemonNoImage = styled(LuImageOff)`
+  position: absolute;
+  color: white;
+  top: -150px;
+  left: 45%;
 `;
 
 export const PokemonTypePillExt = styled(PokemonTypePill)`
   flex-direction: row;
-  width: 40px;
+  font-size: 4vw;
+  width: 7vw;
   text-align: center;
+  @media only screen and (min-width: 600px) {
+    font-size: 2vw;
+  }
 `;
 
 export const PokemonTitleExt = styled(PokemonTitle)`
   font-size: 7vw;
+  margin: 0;
   @media only screen and (min-width: 600px) {
     font-size: 5vw;
   }

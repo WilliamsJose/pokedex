@@ -12,7 +12,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       <Route path="/" element={<HomePage />} />
       <Route path="/page/:page" element={<HomePage />} />
-      <Route path="/details/:pokemonId" element={<CardPokemonDetails />} />
+      <Route path="/pokemon/:pokemonId" element={<CardPokemonDetails />} />
 
       {/* <Route element={<AuthLayout />}>
         <Route path="login" element={<Login />} loader={redirectIfUser} />

@@ -4,15 +4,16 @@ import { Button } from '../Button/styles';
 export const Header = styled.div`
   display: flex;
   flex-direction: row;
-  width: 100vw;
   justify-content: space-between;
   box-sizing: border-box;
   height: 48px;
   background-color: inherit;
   font-size: 30px;
   place-items: center;
-  padding: 40px 18px;
+  padding: 40px 15px;
   color: white;
+  max-width: 1024px;
+  margin: auto;
 `;
 
 export const ButtonExt = styled(Button)`

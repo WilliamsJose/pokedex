@@ -5,7 +5,6 @@ import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 export const Pagination = styled.div`
   display: flex;
   flex-direction: row;
-  width: 100vw;
   justify-content: center;
   gap: 5px;
   box-sizing: border-box;

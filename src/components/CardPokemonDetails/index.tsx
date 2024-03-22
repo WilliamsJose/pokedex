@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import PokeBallSports from '../../assets/poke-ball-sports.svg';
-import { IPokemon } from '../../domain';
+import { IPokemonAbility, IPokemonStats, IPokemonType } from '../../domain';
+import { useData } from '../../hooks/swr';
 import {
   capitalize,
   formatHeight,
@@ -12,23 +14,37 @@ import { SliderContainer, SliderValue } from '../Slider/styles';
 import Tab, { TabContent, TabItem } from '../Tab';
 import * as S from './styles';
 
-interface CardPokemonDetailsProps {
-  data: IPokemon;
-}
-
-const CardPokemonDetails = ({ data }: CardPokemonDetailsProps) => {
+const CardPokemonDetails = () => {
+  const { pokemonId } = useParams();
+  const { data } = useData(`pokemon/${pokemonId}`);
+  console.log(data);
   const [selectedTab, setSelectedTab] = useState<number>(0);
   const { name, types, id, height, weight, abilities, stats } = data;
   const normalizedPokemonType = types[0].type.name.toLowerCase();
-  const pokemonImageUrl = data.sprites.other.dream_world.front_default;
+  const preferredImage = data?.sprites.other.dream_world.front_default;
+  const pokemonImageUrl = preferredImage
+    ? preferredImage
+    : data?.sprites?.front_default;
   const sumPower: number = data.stats.reduce(
-    (prevStat, currStat) => prevStat + currStat.base_stat,
+    (prevStat: number, currStat: IPokemonStats) =>
+      prevStat + currStat.base_stat,
     0,
   );
+  const totalPowerPercentage = sumPower / 6;
+  const baseStatPercentage = (stat: number) => (stat < 101 ? stat : 100);
 
   const onTabSelected = (index: number) => {
     setSelectedTab(index);
   };
+
+  // defines bg color based on pokemon type
+  useEffect(() => {
+    document.getElementById('root')!.style.backgroundColor =
+      `var(--color-${normalizedPokemonType})`;
+    return () => {
+      document.getElementById('root')!.style.backgroundColor = 'white';
+    };
+  }, [normalizedPokemonType]);
 
   return (
     <>
@@ -36,7 +52,7 @@ const CardPokemonDetails = ({ data }: CardPokemonDetailsProps) => {
         <S.PokemonTitleExt>{capitalize(name)}</S.PokemonTitleExt>
         <S.PokemonId>#{String(id).padStart(3, '0')}</S.PokemonId>
         <Container>
-          {types.map(pokemon => (
+          {types.map((pokemon: IPokemonType) => (
             <S.PokemonTypePillExt key={pokemon.type.name}>
               {pokemon.type.name}
             </S.PokemonTypePillExt>
@@ -45,7 +61,11 @@ const CardPokemonDetails = ({ data }: CardPokemonDetailsProps) => {
         <S.PokeBallImage src={PokeBallSports} />
       </S.TopCard>
       <S.LowerCard>
-        <S.PokemonImage src={pokemonImageUrl} />
+        {pokemonImageUrl ? (
+          <S.PokemonImage src={pokemonImageUrl} />
+        ) : (
+          <S.PokemonNoImage size={120} />
+        )}
         <Tab onTabSelected={onTabSelected}>
           <TabItem>About</TabItem>
           <TabItem>Base Stats</TabItem>
@@ -68,7 +88,9 @@ const CardPokemonDetails = ({ data }: CardPokemonDetailsProps) => {
           <S.SpacedRow>
             <span>Abilities</span>
             <span>
-              {abilities.map(pokemon => pokemon.ability.name).join(', ')}
+              {abilities
+                .map((pokemon: IPokemonAbility) => pokemon.ability.name)
+                .join(', ')}
             </span>
           </S.SpacedRow>
           <h3>Breeding</h3>
@@ -86,7 +108,7 @@ const CardPokemonDetails = ({ data }: CardPokemonDetailsProps) => {
           </S.SpacedRow>
         </TabContent>
         <TabContent selectedTab={selectedTab} tabToShow={1}>
-          {stats.map(pokemon => (
+          {stats.map((pokemon: IPokemonStats) => (
             <S.SpacedRow key={pokemon.stat.name}>
               <span>{capitalize(formatSpecialWords(pokemon.stat.name))}</span>
               <S.MarginSpan $value={pokemon.base_stat}>
@@ -95,7 +117,7 @@ const CardPokemonDetails = ({ data }: CardPokemonDetailsProps) => {
               <SliderContainer>
                 <SliderValue
                   $fillColor={normalizedPokemonType}
-                  $value={pokemon.base_stat < 101 ? pokemon.base_stat : 100}
+                  $value={baseStatPercentage(pokemon.base_stat)}
                 />
               </SliderContainer>
             </S.SpacedRow>
@@ -106,7 +128,7 @@ const CardPokemonDetails = ({ data }: CardPokemonDetailsProps) => {
             <SliderContainer>
               <SliderValue
                 $fillColor={normalizedPokemonType}
-                $value={sumPower / 6}
+                $value={totalPowerPercentage}
               />
             </SliderContainer>
           </S.SpacedRow>
