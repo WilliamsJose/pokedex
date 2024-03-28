@@ -7,7 +7,7 @@ function FilterPokemon() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const { data } = useData('type');
   const navigate = useNavigate();
-  const filterOptions = data.results;
+  const filterOptions = data?.results;
 
   const handleOptionChange = (event: any): void => {
     const url = event.target.value.replace(
@@ -28,11 +28,12 @@ function FilterPokemon() {
           <S.FilterTitle>Filter by type</S.FilterTitle>
           <S.FilterSelect value={0} onChange={handleOptionChange}>
             <option value="0">Select a type</option>
-            {filterOptions.map((option: string, index: number) => (
-              <option key={index} value={option.url}>
-                {option.name}
-              </option>
-            ))}
+            {filterOptions &&
+              filterOptions.map((option: any, index: number) => (
+                <option key={index} value={option.url}>
+                  {option.name}
+                </option>
+              ))}
           </S.FilterSelect>
         </S.FilterCard>
       )}

@@ -25,10 +25,10 @@ const CardPokemon = ({ name }: CardPokemonProps) => {
     // set bgcolor based on first element type of pokémon
     <CardDefault $bgColor={normalizedPokemonType}>
       {!isLoading && (
-        <Link to={`/pokemon/${data.name}`}>
+        <Link to={`/pokemon/${data?.name}`}>
           <S.PokeBallImage src={PokeBallSports} />
           <S.TopColumnContainer>
-            <PokemonTitle>{data.name}</PokemonTitle>
+            <PokemonTitle>{data?.name}</PokemonTitle>
             <Container>
               <S.PokemonTypeContainer>
                 {types &&

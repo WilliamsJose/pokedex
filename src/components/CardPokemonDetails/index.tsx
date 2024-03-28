@@ -24,7 +24,7 @@ const CardPokemonDetails = () => {
   const pokemonImageUrl = preferredImage
     ? preferredImage
     : data?.sprites?.front_default;
-  const sumPower: number = data.stats.reduce(
+  const sumPower: number = data?.stats.reduce(
     (prevStat: number, currStat: IPokemonStats) =>
       prevStat + currStat.base_stat,
     0,
