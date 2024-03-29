@@ -26,8 +26,8 @@ export const FilterCard = styled(CardDefault)`
   flex-direction: column;
   width: fit-content;
   height: fit-content;
-  max-width: 60vw;
   background-color: white;
+  color: black;
   padding: 15px;
 `;
 

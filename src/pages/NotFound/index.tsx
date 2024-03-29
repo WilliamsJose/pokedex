@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Title } from '../../components/Title/styles';
 import * as S from './styles';
-import { Button } from '../../components/Button/styles';
 
 function NotFound({ text }: { text?: string }) {
   const navigate = useNavigate();
@@ -13,9 +12,9 @@ function NotFound({ text }: { text?: string }) {
   return (
     <S.NotFoundContainer>
       <Title>Sorry!</Title>
-      <p>{text ? text : 'Something wrong ocurred'}</p>
+      <S.NotFoundText>{text ? text : 'Something wrong ocurred'}</S.NotFoundText>
       <p>
-        <Button onClick={goHome}>Go Home</Button>
+        <S.NotFoundButton onClick={goHome}>Go Home</S.NotFoundButton>
       </p>
     </S.NotFoundContainer>
   );
