@@ -28,9 +28,10 @@ export const TopCard = styled(CardDefault)`
 export const LowerCard = styled(TopCard)`
   background-color: white;
   border-radius: 15px 15px 0 0;
-  margin-top: -5vh;
   min-height: 100%;
   overflow: visible;
+  padding-top: 20px;
+  color: black;
 `;
 
 export const PokeBallImage = styled(Image)`
@@ -42,13 +43,11 @@ export const PokeBallImage = styled(Image)`
 `;
 
 export const PokemonImage = styled(Image)`
-  width: 35%;
-  max-width: 300px;
-  position: sticky;
-  margin: -35% auto 0 auto;
-  height: 300px;
+  position: absolute;
+  height: 250px;
+  top: -220px;
   @media only screen and (min-width: 600px) {
-    margin-top: -27%;
+    left: -30px;
   }
 `;
 
@@ -62,18 +61,18 @@ export const PokemonNoImage = styled(LuImageOff)`
 export const PokemonTypePillExt = styled(PokemonTypePill)`
   flex-direction: row;
   font-size: 4vw;
-  width: 7vw;
+  width: fit-content;
   text-align: center;
   @media only screen and (min-width: 600px) {
-    font-size: 2vw;
+    font-size: 18px;
   }
 `;
 
 export const PokemonTitleExt = styled(PokemonTitle)`
-  font-size: 7vw;
+  font-size: 9vw;
   margin: 0;
   @media only screen and (min-width: 600px) {
-    font-size: 5vw;
+    font-size: 65px;
   }
 `;
 
