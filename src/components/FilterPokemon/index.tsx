@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import * as S from './styles';
 import { useNavigate } from 'react-router-dom';
 import { useData } from '../../hooks/swr';
@@ -7,9 +7,9 @@ function FilterPokemon() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const { data } = useData('type');
   const navigate = useNavigate();
-  const filterOptions = data?.results;
+  const filterOptions: { url: string; name: string }[] = data?.results;
 
-  const handleOptionChange = (event: any): void => {
+  const handleOptionChange = (event: ChangeEvent<HTMLSelectElement>): void => {
     const url = event.target.value.replace(
       import.meta.env.VITE_API_BASE_URL,
       '',
@@ -29,7 +29,7 @@ function FilterPokemon() {
           <S.FilterSelect value={0} onChange={handleOptionChange}>
             <option value="0">Select a type</option>
             {filterOptions &&
-              filterOptions.map((option: any, index: number) => (
+              filterOptions.map((option, index: number) => (
                 <option key={index} value={option.url}>
                   {option.name}
                 </option>
